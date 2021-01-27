@@ -8,7 +8,18 @@
 </head>
 
 <body>
-  <h1 style="color:firebrick;">Beef</h1>
+  <h1 id="special-text" style="color:firebrick;">Beef</h1>
+  <script>
+    (() => {
+      const counter = 1;
+      setInterval(() => {
+        const header = document.getElementById('special-text')
+
+        header.textContent = `Where is the beef? It is floor ${counter}`
+        counter++
+      }, 10_000)
+    })()
+  </script>
 </body>
 
 </html>
