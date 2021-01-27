@@ -4,21 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>If you're not OBS, Go Away</title>
+  <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
 </head>
 
 <body>
-  <h1 id="special-text" style="color:firebrick;">Where is the beef? Idk</h1>
+  <div id="chat-text" style="font-size: 1.5rem; color:goldenrod;text-decoration-style: wavy;">Boop Counter: 0 times
+  </div>
   <script>
-    (() => {
-      let counter = 1;
-      setInterval(() => {
-        const header = document.getElementById('special-text')
-
-        header.textContent = `Where is the beef? It is floor ${counter}`
-        counter++
-      }, 10_000)
-    })()
+    console.log('Setup started')
+    let counter = 0;
+    const spot = document.getElementById('chat-text');
+    ComfyJS.onCommand = (user, command, message, flags, extra) => {
+      console.log('This is a boop')
+      if (command === "boop") {
+        counter++;
+        spot.textContent = `Boop Counter ${counter} ${counter === 1 ? "time" : "times"}`
+      }
+    }
+    ComfyJS.Init("maxcellw");
+    console.log('Setup completed')
   </script>
 </body>
 
